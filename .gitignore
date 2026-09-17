@@ -5,3 +5,6 @@
 .vscode/
 .idea/
 *.swp
+
+# ---> Docs (brief & answer PDFs stay local, repo is code-only)
+*.pdf
