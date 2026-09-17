@@ -23,5 +23,39 @@
   <h1>Course Live Search</h1>
   <input type="text" id="searchInput" placeholder="Search courses..." />
   <ul id="resultList"></ul>
+
+  <script>
+    const courses = [
+      { code: 'WAD01', title: 'HTML Fundamentals' },
+      { code: 'WAD02', title: 'CSS Styling Basics' },
+      { code: 'WAD03', title: 'JavaScript Essentials' },
+      { code: 'WAD04', title: 'DOM Manipulation' },
+      { code: 'WAD05', title: 'Web Security Basics' },
+      { code: 'WAD06', title: 'Responsive Web Design' },
+      { code: 'WAD07', title: 'Frontend Framework Intro' },
+      { code: 'WAD08', title: 'Backend with Node.js' },
+      { code: 'WAD09', title: 'Database Fundamentals' },
+      { code: 'WAD10', title: 'Deployment and Hosting' }
+    ];
+
+    const resultList = document.getElementById('resultList');
+
+    // Render a list of courses using only createElement + textContent.
+    function renderList(data) {
+      // Clear previous results
+      while (resultList.firstChild) {
+        resultList.removeChild(resultList.firstChild);
+      }
+
+      for (const course of data) {
+        const li = document.createElement('li');
+        li.textContent = course.code + ' — ' + course.title;
+        resultList.appendChild(li);
+      }
+    }
+
+    // Initial render: show everything
+    renderList(courses);
+  </script>
 </body>
 </html>
