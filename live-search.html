@@ -33,30 +33,21 @@
   </style>
 </head>
 <body>
-  <h1>Course Live Search</h1>
-  <input type="text" id="searchInput" placeholder="Search courses..." />
+  <h1>Live Search</h1>
+  <input type="text" id="searchInput" placeholder="Search products..." />
   <p id="resultCount"></p>
   <ul id="resultList"></ul>
 
   <script>
-    const courses = [
-      { code: 'WAD01', title: 'HTML Fundamentals' },
-      { code: 'WAD02', title: 'CSS Styling Basics' },
-      { code: 'WAD03', title: 'JavaScript Essentials' },
-      { code: 'WAD04', title: 'DOM Manipulation' },
-      { code: 'WAD05', title: 'Web Security Basics' },
-      { code: 'WAD06', title: 'Responsive Web Design' },
-      { code: 'WAD07', title: 'Frontend Framework Intro' },
-      { code: 'WAD08', title: 'Backend with Node.js' },
-      { code: 'WAD09', title: 'Database Fundamentals' },
-      { code: 'WAD10', title: 'Deployment and Hosting' }
-    ];
+    let items = [];
 
     const resultList = document.getElementById('resultList');
     const searchInput = document.getElementById('searchInput');
     const resultCount = document.getElementById('resultCount');
 
-    // Render a list of courses using only createElement + textContent.
+    resultCount.textContent = 'Loading data...';
+
+    // Render a list of items using only createElement + textContent.
     function renderList(data) {
       // Clear previous results
       while (resultList.firstChild) {
@@ -65,30 +56,41 @@
 
       if (data.length === 0) {
         const li = document.createElement('li');
-        li.textContent = 'No courses found.';
+        li.textContent = 'No products found.';
         resultList.appendChild(li);
       } else {
-        for (const course of data) {
+        for (const item of data) {
           const li = document.createElement('li');
-          li.textContent = course.code + ' — ' + course.title;
+          li.textContent =
+            item.name + ' — ' + item.category + ' — Rp' + item.price.toLocaleString('id-ID');
           resultList.appendChild(li);
         }
       }
 
-      resultCount.textContent = data.length + ' course(s) found';
+      resultCount.textContent = data.length + ' product(s) found';
     }
 
-    // Initial render: show everything
-    renderList(courses);
+    // Load dataset from external JSON file
+    fetch('data.json')
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        items = data;
+        renderList(items);
+      })
+      .catch(function () {
+        resultCount.textContent = 'Failed to load data.json';
+      });
 
     // Live filter: re-render on every input event
     searchInput.addEventListener('input', function () {
       const keyword = searchInput.value.toLowerCase().trim();
 
-      const filtered = courses.filter(function (course) {
+      const filtered = items.filter(function (item) {
         return (
-          course.title.toLowerCase().includes(keyword) ||
-          course.code.toLowerCase().includes(keyword)
+          item.name.toLowerCase().includes(keyword) ||
+          item.category.toLowerCase().includes(keyword)
         );
       });
 
