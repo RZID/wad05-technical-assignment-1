@@ -1,23 +1,18 @@
-# Technical Assignment 1 — Web Security & JS DOM Manipulation
+# Technical Assignment 1 — Live Search (Q3)
+
+Live search input that filters a dataset in real time. Answers for Q1 and Q2
+are submitted as a separate PDF (not tracked in this repo).
 
 ## Contents
 
-- `answer-q1-innerHTML-vs-textContent.md` — Q1: differences between
-  `innerHTML` and `textContent`, when to use each, with examples.
-- `answer-q2-xss-scenario.md` — Q2: real-world stored XSS scenario
-  (vulnerability, exploitation, impact).
-- `live-search.html` — Q3: standalone live search (no build step, no
-  `innerHTML`).
+- `live-search.html` — search page (no build step, no `innerHTML`)
+- `data.json` — dataset (14 random items: makanan, minuman, elektronik,
+  fashion, aksesoris)
 
-## Q3 — How to run
+## How to run
 
-No dependencies. Just open the file in a browser:
-
-```bash
-xdg-open live-search.html
-```
-
-Or with Python http server:
+A local HTTP server is required because the page loads `data.json` via
+`fetch` (browsers block `fetch` on `file://` URLs):
 
 ```bash
 python3 -m http.server 8000
@@ -27,5 +22,5 @@ python3 -m http.server 8000
 Type in the search box — the list filters in real time. Implementation uses:
 
 - `input` event for live updates
-- `array.filter()` for filtering
+- `array.filter()` for filtering (by name and category)
 - full re-render with `createElement` + `textContent` only
