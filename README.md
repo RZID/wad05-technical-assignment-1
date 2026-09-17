@@ -5,7 +5,8 @@ are submitted as a separate PDF (not tracked in this repo).
 
 ## Contents
 
-- `live-search.html` — search page (no build step, no `innerHTML`)
+- `live-search.html` — search page (no build step, DOM built with
+  `createElement` + `textContent` only)
 - `data.json` — dataset (14 random items: makanan, minuman, elektronik,
   fashion, aksesoris)
 
