@@ -39,6 +39,7 @@
     ];
 
     const resultList = document.getElementById('resultList');
+    const searchInput = document.getElementById('searchInput');
 
     // Render a list of courses using only createElement + textContent.
     function renderList(data) {
@@ -56,6 +57,20 @@
 
     // Initial render: show everything
     renderList(courses);
+
+    // Live filter: re-render on every input event
+    searchInput.addEventListener('input', function () {
+      const keyword = searchInput.value.toLowerCase().trim();
+
+      const filtered = courses.filter(function (course) {
+        return (
+          course.title.toLowerCase().includes(keyword) ||
+          course.code.toLowerCase().includes(keyword)
+        );
+      });
+
+      renderList(filtered);
+    });
   </script>
 </body>
 </html>
