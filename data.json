@@ -1,0 +1,16 @@
+[
+  { "id": 1, "name": "Kopi Susu Gula Aren", "category": "Minuman", "price": 18000 },
+  { "id": 2, "name": "Roti Bakar Coklat Keju", "category": "Makanan", "price": 15000 },
+  { "id": 3, "name": "Ayam Geprek Sambal Matah", "category": "Makanan", "price": 13000 },
+  { "id": 4, "name": "Es Teh Manis Jumbo", "category": "Minuman", "price": 8000 },
+  { "id": 5, "name": "Pisang Goreng Coklat", "category": "Makanan", "price": 10000 },
+  { "id": 6, "name": "Mie Goreng Jawa", "category": "Makanan", "price": 14000 },
+  { "id": 7, "name": "Sate Ayam Madura Isi 10", "category": "Makanan", "price": 20000 },
+  { "id": 8, "name": "Gado-Gado Jakarta", "category": "Makanan", "price": 12000 },
+  { "id": 9, "name": "Keyboard Mechanical 68%", "category": "Elektronik", "price": 450000 },
+  { "id": 10, "name": "Mouse Wireless Silent", "category": "Elektronik", "price": 150000 },
+  { "id": 11, "name": "Hoodie Oversize Hitam", "category": "Fashion", "price": 175000 },
+  { "id": 12, "name": "Tumbler Stainless 750ml", "category": "Aksesoris", "price": 95000 },
+  { "id": 13, "name": "Backpack Laptop 15 Inch", "category": "Aksesoris", "price": 275000 },
+  { "id": 14, "name": "Lampu Meja LED", "category": "Elektronik", "price": 85000 }
+]
