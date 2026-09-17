@@ -17,11 +17,25 @@
       font-size: 16px;
       box-sizing: border-box;
     }
+    #resultCount {
+      color: #555;
+      font-size: 14px;
+      margin: 12px 0 0;
+    }
+    #resultList {
+      list-style: none;
+      padding: 0;
+    }
+    #resultList li {
+      padding: 8px 10px;
+      border-bottom: 1px solid #ddd;
+    }
   </style>
 </head>
 <body>
   <h1>Course Live Search</h1>
   <input type="text" id="searchInput" placeholder="Search courses..." />
+  <p id="resultCount"></p>
   <ul id="resultList"></ul>
 
   <script>
@@ -40,6 +54,7 @@
 
     const resultList = document.getElementById('resultList');
     const searchInput = document.getElementById('searchInput');
+    const resultCount = document.getElementById('resultCount');
 
     // Render a list of courses using only createElement + textContent.
     function renderList(data) {
@@ -48,11 +63,19 @@
         resultList.removeChild(resultList.firstChild);
       }
 
-      for (const course of data) {
+      if (data.length === 0) {
         const li = document.createElement('li');
-        li.textContent = course.code + ' — ' + course.title;
+        li.textContent = 'No courses found.';
         resultList.appendChild(li);
+      } else {
+        for (const course of data) {
+          const li = document.createElement('li');
+          li.textContent = course.code + ' — ' + course.title;
+          resultList.appendChild(li);
+        }
       }
+
+      resultCount.textContent = data.length + ' course(s) found';
     }
 
     // Initial render: show everything
